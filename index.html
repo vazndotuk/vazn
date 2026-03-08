@@ -3,172 +3,279 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ASCII Homepage</title>
+<title>Portfolio</title>
 
 <style>
 
-body{
-background:black;
-color:white;
-font-family:monospace;
+*{
 margin:0;
-overflow-x:hidden;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
 }
 
-/* click anywhere overlay */
+body{
+background:#050505;
+color:white;
+height:100vh;
+overflow:hidden;
+}
 
-#overlay{
+/* INTRO SCREEN */
+
+#intro{
 position:fixed;
-top:0;
-left:0;
 width:100%;
 height:100%;
-background:black;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:32px;
+background:#050505;
+z-index:10;
+transition:opacity 1s ease;
+}
+
+/* CLICK BUTTON */
+
+#intro button{
+
+background:transparent;
+border:1px solid rgba(255,255,255,0.35);
+color:white;
+
+font-size:clamp(20px,2vw,26px);
+padding:22px 60px;
+
 cursor:pointer;
-z-index:9999;
+
+transition:all .3s ease;
+
+letter-spacing:1px;
 }
 
-/* fade animation */
+#intro button:hover{
 
-.fade{
+background:rgba(255,255,255,0.08);
+border-color:white;
+
+}
+
+/* MAIN SITE */
+
+#main{
 opacity:0;
-animation:fadeIn 2s forwards;
+transition:opacity 1.5s ease;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
 }
 
-@keyframes fadeIn{
-to{opacity:1;}
+/* SPOTLIGHT */
+
+.spotlight{
+position:fixed;
+inset:0;
+background:radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 60%);
+pointer-events:none;
+z-index:-2;
 }
 
-/* main container */
+/* CURSOR GLOW */
+
+.cursor-glow{
+position:fixed;
+width:320px;
+height:320px;
+border-radius:50%;
+background:radial-gradient(circle, rgba(255,255,255,0.15), transparent 65%);
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:-1;
+transition:transform .05s linear;
+}
+
+/* CONTENT */
 
 .container{
-text-align:center;
-margin-top:100px;
+max-width:900px;
+padding:40px 20px;
+position:relative;
 }
 
-/* ascii art */
+/* EDIT LABEL */
 
-#ascii{
-font-size:16px;
-white-space:pre;
-outline:none;
-margin-bottom:40px;
+.edit{
+position:absolute;
+right:0;
+top:-10px;
+opacity:.5;
+font-size:14px;
 }
 
-/* text section */
+/* TITLE */
 
-.description{
-margin:20px;
-outline:none;
+.title{
+font-size:clamp(42px,6vw,70px);
+font-weight:700;
+line-height:1.1;
+margin-bottom:25px;
 }
 
-/* buttons */
+/* PROFILE PICTURE */
 
-.buttons{
-margin-top:40px;
-}
-
-.buttons button{
-background:black;
-border:1px solid white;
-color:white;
-padding:10px 20px;
-margin:10px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.buttons button:hover{
-background:white;
-color:black;
-}
-
-/* cursor gradient */
-
-.cursor{
+.pfp{
 width:120px;
 height:120px;
 border-radius:50%;
-position:fixed;
-pointer-events:none;
-background:radial-gradient(circle, rgba(255,0,255,0.4), rgba(0,255,255,0.1), transparent);
-transform:translate(-50%,-50%);
-mix-blend-mode:screen;
-z-index:999;
+object-fit:cover;
+margin:20px auto;
+border:2px solid rgba(255,255,255,0.25);
+}
+
+/* DESCRIPTION */
+
+.description{
+max-width:620px;
+margin:20px auto 40px auto;
+opacity:.75;
+line-height:1.6;
+font-size:16px;
+}
+
+/* SOCIAL LINKS */
+
+.socials{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:24px;
+}
+
+.socials a{
+text-decoration:none;
+color:white;
+opacity:.7;
+font-size:16px;
+transition:.3s;
+}
+
+.socials a:hover{
+opacity:1;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+#intro button{
+padding:18px 40px;
+font-size:20px;
+}
+
+.title{
+font-size:38px;
+}
+
+.pfp{
+width:95px;
+height:95px;
+}
+
+.description{
+font-size:14px;
+}
+
 }
 
 </style>
 </head>
-
 <body>
 
-<div id="overlay">click anywhere</div>
+<!-- INTRO -->
 
-<div class="cursor"></div>
-
-<div class="container fade">
-
-<div id="ascii" contenteditable="true">
-
-      /\
-     /  \
-    /----\
-   /      \
-  /  ASCII \
- /   ART    \
-/___________\
-
-(edit this ascii art)
-
+<div id="intro">
+<button onclick="startSite()">Click Anywhere</button>
 </div>
 
-<div class="description" contenteditable="true">
-Example description text here.
-Click and edit this text.
-You can describe your project, yourself, or anything.
-</div>
-
-<div class="description" contenteditable="true">
-Another editable text section.
-Write anything you want here.
-</div>
-
-<div class="buttons">
-<button onclick="window.location.href='https://example.com'">Link 1</button>
-<button onclick="window.location.href='https://example.com'">Link 2</button>
-<button onclick="window.location.href='https://example.com'">Link 3</button>
-</div>
-
-</div>
+<!-- MUSIC -->
 
 <audio id="music" loop>
-<source src="YOUR-MUSIC.mp3" type="audio/mpeg">
+<source src="song.mp3" type="audio/mpeg">
 </audio>
+
+<!-- EFFECTS -->
+
+<div class="cursor-glow" id="glow"></div>
+<div class="spotlight"></div>
+
+<!-- MAIN CONTENT -->
+
+<div id="main">
+
+<div class="container">
+
+<div class="edit">Edit here</div>
+
+<div class="title">
+Every Lead.<br>
+Every Connection.
+</div>
+
+<img src="pfp.jpg" class="pfp">
+
+<div class="description">
+Replace this text with your portfolio description. Talk about your work, projects, or skills here.
+</div>
+
+<div class="socials">
+<a href="#">Twitter</a>
+<a href="#">GitHub</a>
+<a href="#">Discord</a>
+<a href="#">Telegram</a>
+<a href="#">Email</a>
+</div>
+
+</div>
+
+</div>
 
 <script>
 
-/* overlay click */
+/* START SITE */
 
-const overlay=document.getElementById("overlay")
+function startSite(){
+
+const intro=document.getElementById("intro")
+const main=document.getElementById("main")
 const music=document.getElementById("music")
 
-overlay.addEventListener("click",()=>{
-overlay.style.display="none"
 music.play()
+
+intro.style.opacity="0"
+
+setTimeout(()=>{
+intro.style.display="none"
+main.style.opacity="1"
+},1000)
+
+}
+
+/* CURSOR GLOW */
+
+const glow=document.getElementById("glow")
+
+document.addEventListener("mousemove",e=>{
+glow.style.left=e.clientX+"px"
+glow.style.top=e.clientY+"px"
 })
 
-/* cursor effect */
+/* DISABLE GLOW ON MOBILE */
 
-const cursor=document.querySelector(".cursor")
-
-document.addEventListener("mousemove",(e)=>{
-cursor.style.left=e.clientX+"px"
-cursor.style.top=e.clientY+"px"
-})
+if(window.innerWidth < 700){
+glow.style.display="none"
+}
 
 </script>
 
