@@ -5,12 +5,24 @@
 <title>vazN / projects</title>
 
 <style>
-body{
+
+html,body{
     margin:0;
+    height:100%;
     background:black;
     color:white;
     font-family:Arial, Helvetica, sans-serif;
     overflow:hidden;
+}
+
+/* spotlight background */
+body{
+    background: radial-gradient(
+        circle at var(--x) var(--y),
+        rgba(255,255,255,0.08),
+        rgba(0,0,0,0.95) 300px
+    );
+    transition:background 0.05s linear;
 }
 
 /* loading screen */
@@ -23,12 +35,22 @@ body{
     justify-content:center;
     align-items:center;
     z-index:999;
-    animation:pullUp 1.5s forwards;
 }
 
-@keyframes pullUp{
-    0%{transform:translateY(0);}
-    100%{transform:translateY(-100%);}
+#loaderText{
+    font-size:18px;
+    opacity:0;
+    animation:fadeIn 1s forwards;
+}
+
+@keyframes fadeIn{
+    from{opacity:0}
+    to{opacity:1}
+}
+
+@keyframes liftAway{
+    0%{transform:translateY(0)}
+    100%{transform:translateY(-120%)}
 }
 
 /* main content */
@@ -38,31 +60,40 @@ body{
     top:40%;
     left:50%;
     transform:translate(-50%,-50%);
+    opacity:0;
+    animation:contentFade 1.5s ease forwards;
+    animation-delay:1s;
+}
+
+@keyframes contentFade{
+    from{opacity:0; transform:translate(-50%,-40%)}
+    to{opacity:1; transform:translate(-50%,-50%)}
 }
 
 /* title */
 h1{
-    font-size:60px;
-    margin-bottom:30px;
+    font-size:64px;
+    margin-bottom:35px;
     cursor:pointer;
 }
 
 /* shake animation */
 @keyframes shake{
-    0%{transform:translateX(0);}
-    25%{transform:translateX(-6px);}
-    50%{transform:translateX(6px);}
-    75%{transform:translateX(-6px);}
-    100%{transform:translateX(0);}
+    0%{transform:translateX(0)}
+    20%{transform:translateX(-6px)}
+    40%{transform:translateX(6px)}
+    60%{transform:translateX(-4px)}
+    80%{transform:translateX(4px)}
+    100%{transform:translateX(0)}
 }
 
 .shake{
-    animation:shake 0.5s;
+    animation:shake 0.6s ease;
 }
 
 /* links */
 .links{
-    width:200px;
+    width:240px;
     margin:auto;
 }
 
@@ -70,83 +101,113 @@ h1{
     display:block;
     color:white;
     text-decoration:none;
-    padding:12px 0;
+    padding:14px 0;
+    letter-spacing:1px;
+}
+
+.links a:hover{
+    opacity:0.7;
 }
 
 .line{
     width:100%;
     height:1px;
     background:white;
+    opacity:0.4;
 }
 
-/* snowflake */
-#flake{
+/* snow particles */
+
+.particle{
     position:fixed;
-    font-size:18px;
     pointer-events:none;
+    color:white;
+    font-size:12px;
+    opacity:0.9;
+    animation:fall linear forwards;
 }
+
+@keyframes fall{
+    to{
+        transform:translateY(120px);
+        opacity:0;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
-<div id="loader"></div>
-
-<div id="content">
-    <h1 id="title">projects</h1>
-
-    <div class="links">
-        <div class="line"></div>
-        <a href="#">project one</a>
-        <div class="line"></div>
-        <a href="#">project two</a>
-        <div class="line"></div>
-        <a href="#">project three</a>
-        <div class="line"></div>
-    </div>
+<div id="loader">
+<div id="loaderText">loading...</div>
 </div>
 
-<div id="flake">❄</div>
+<div id="content">
+<h1 id="title">projects</h1>
+
+<div class="links">
+<div class="line"></div>
+<a href="#">project one</a>
+<div class="line"></div>
+<a href="#">project two</a>
+<div class="line"></div>
+<a href="#">project three</a>
+<div class="line"></div>
+</div>
+</div>
 
 <script>
 
+/* loader animation */
+
+setTimeout(()=>{
+    const loader=document.getElementById("loader")
+    loader.style.animation="liftAway 1.2s cubic-bezier(.7,0,.3,1) forwards"
+},900)
+
 /* title shake */
-const title = document.getElementById("title");
 
-title.onclick = () => {
-    title.classList.remove("shake");
-    void title.offsetWidth;
-    title.classList.add("shake");
-};
+const title=document.getElementById("title")
 
-/* snowflake follow + fall */
-const flake = document.getElementById("flake");
-let mouseX = window.innerWidth/2;
-let y = 0;
-
-document.addEventListener("mousemove", e=>{
-    mouseX = e.clientX;
-});
-
-function animate(){
-    y += 1.5;
-
-    if(y > window.innerHeight){
-        y = 0;
-    }
-
-    flake.style.left = mouseX + "px";
-    flake.style.top = y + "px";
-
-    requestAnimationFrame(animate);
+title.onclick=()=>{
+    title.classList.remove("shake")
+    void title.offsetWidth
+    title.classList.add("shake")
 }
 
-animate();
+/* spotlight follow mouse */
 
-/* remove loader overflow after animation */
-setTimeout(()=>{
-    document.body.style.overflow="auto";
-},1500);
+document.addEventListener("mousemove",e=>{
+    document.body.style.setProperty("--x",e.clientX+"px")
+    document.body.style.setProperty("--y",e.clientY+"px")
+
+    spawnSnow(e.clientX,e.clientY)
+})
+
+/* snow particle trail */
+
+function spawnSnow(x,y){
+
+    const particle=document.createElement("div")
+    particle.className="particle"
+    particle.innerHTML="❄"
+
+    particle.style.left=x+"px"
+    particle.style.top=y+"px"
+
+    const size=Math.random()*10+8
+    particle.style.fontSize=size+"px"
+
+    const duration=Math.random()*0.8+0.6
+    particle.style.animationDuration=duration+"s"
+
+    document.body.appendChild(particle)
+
+    setTimeout(()=>{
+        particle.remove()
+    },duration*1000)
+}
 
 </script>
 
