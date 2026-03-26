@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vazn.uk</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimal Terminal Site</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <div class="container">
 
     <!-- ASCII TITLE (EDIT THIS) -->
     <pre class="ascii-title">
@@ -19,25 +21,27 @@ Y88b    /   /~~~8e   ~~~d88P 888-~88e      888  888 888 e~ ~
                                                               
     </pre>
 
-    <!-- PROFILE SECTION -->
-    <div class="profile-container">
-        <img src="profile.jpg" alt="Profile" class="profile-pic">
-        <span class="username">vee</span>
+    <!-- PROFILE -->
+    <div class="profile">
+      <img src="profile.jpg" alt="profile" class="avatar">
+      <span class="username">vee</span>
     </div>
 
     <!-- STATUS -->
     <div class="status">
-        <p>status:</p>
-        <p id="status-text">$ inactive</p>
+      <p>status:</p>
+      <p id="status-text">$ inactive</p>
     </div>
 
     <!-- LINKS -->
     <div class="links">
-        <a href="#" class="link">$ telegram</a>
-        <a href="#" class="link">$ signal</a>
-        <a href="#" class="link">$ about</a>
+      <a href="#" class="link">$ telegram</a>
+      <a href="#" class="link">$ signal</a>
+      <a href="#" class="link">$ about</a>
     </div>
 
-    <script src="script.js"></script>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
