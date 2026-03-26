@@ -1,6 +1,5 @@
-// Simple button click effect
 document.querySelectorAll('.btn').forEach(button => {
-    button.addEventListener('click', function(e) {
+    button.addEventListener('click', function() {
         this.style.transform = "scale(0.95)";
         setTimeout(() => {
             this.style.transform = "scale(1)";
@@ -8,7 +7,6 @@ document.querySelectorAll('.btn').forEach(button => {
     });
 });
 
-// Optional: subtle glow animation for ASCII
 const ascii = document.querySelector('.ascii-art');
 
 setInterval(() => {
