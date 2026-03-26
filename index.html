@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>vazn</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #000;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+    }
+
+    .container {
+        max-width: 800px;
+        width: 90%;
+        text-align: center;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    /* ASCII ART */
+    .ascii {
+        background: #111;
+        padding: 15px;
+        font-family: monospace;
+        white-space: pre;
+        overflow-x: auto;
+        border-radius: 10px;
+        margin-bottom: 25px;
+    }
+
+    /* PROFILE */
+    .profile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+    .profile img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #444;
+    }
+
+    .username {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    /* ABOUT */
+    .about {
+        margin: 15px 0;
+        font-size: 16px;
+        color: #ccc;
+    }
+
+    /* STATUS */
+    .status {
+        margin: 15px 0;
+        font-size: 16px;
+    }
+
+    .inactive {
+        color: red;
+        font-weight: bold;
+    }
+
+    /* BUTTONS */
+    .links {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn {
+        text-decoration: none;
+        color: white;
+        padding: 12px;
+        border: 1px solid #444;
+        border-radius: 8px;
+        transition: 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* COOL HOVER EFFECT */
+    .btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: 0.4s;
+    }
+
+    .btn:hover::before {
+        left: 100%;
+    }
+
+    .btn:hover {
+        background: #111;
+        border-color: #888;
+        transform: scale(1.03);
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 22px;
+        }
+
+        .profile img {
+            width: 65px;
+            height: 65px;
+        }
+
+        .username {
+            font-size: 18px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>vazn</h1>
+
+    <div class="ascii">
+                                                    888   _   
+Y88b    /   /~~~8e   ~~~d88P 888-~88e      888  888 888 e~ ~  
+ Y88b  /        88b    d88P  888  888      888  888 888d8b    
+  Y88b/    e88~-888   d88P   888  888      888  888 888Y88b   
+   Y8/    C888  888  d88P    888  888 d88b 888  888 888 Y88b  
+    Y      "88_-888 d88P___  888  888 Y88P "88_-888 888  Y88b 
+                                                              
+    </div>
+
+    <div class="profile">
+        <img src="https://via.placeholder.com/150" alt="profile">
+        <div class="username">vee</div>
+    </div>
+
+    <div class="about">
+        about me
+    </div>
+
+    <div class="status">
+        status: <span class="inactive">inactive</span>
+    </div>
+
+    <div class="links">
+        <a href="#" class="btn">telegram</a>
+        <a href="#" class="btn">signal</a>
+        <a href="#" class="btn">idk</a>
+    </div>
+
+</div>
+
+</body>
+</html>
