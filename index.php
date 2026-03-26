@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Page</title>
+    <title>vazn</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,7 +24,7 @@ Y88b    /   /~~~8e   ~~~d88P 888-~88e      888  888 888 e~ ~
     <!-- PROFILE -->
     <div class="profile">
         <img src="https://via.placeholder.com/100" class="avatar">
-        <span class="username">vee</span>
+        <span class="username">user</span>
     </div>
 
     <!-- ABOUT -->
