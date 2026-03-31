@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #0f0f0f;
+    color: #fff;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.title {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.pfp {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    transition: transform 0.3s ease;
+}
+
+.pfp:hover {
+    transform: scale(1.1) rotate(3deg);
+}
+
+.name {
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 220px;
+    margin: auto;
+}
+
+.btn {
+    text-decoration: none;
+    color: white;
+    padding: 12px;
+    border: 1px solid #fff;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    background: white;
+    top: 0;
+    left: 0;
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    width: 100%;
+}
+
+.btn:hover {
+    color: black;
+    transform: translateY(-3px);
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
