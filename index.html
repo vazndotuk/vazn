@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vee</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .profile-container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .username {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .links a {
+            display: block;
+            margin: 10px 0;
+            color: #00BFFF;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .pgp-key {
+            margin-top: 20px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 300px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        /* Mobile Support */
+        @media (max-width: 600px) {
+            .profile-container {
+                width: 80%;
+                padding: 15px;
+            }
+
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .username {
+                font-size: 20px;
+            }
+
+            .links a {
+                font-size: 14px;
+            }
+        }
+
+        /* Snowflakes */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1rem;
+            pointer-events: none;
+            user-select: none;
+            animation: snowflakes 10s linear infinite;
+        }
+
+        @keyframes snowflakes {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="profile-container">
+    <!-- Profile Image -->
+    <img src="pfp.jpg" alt="Profile Picture" class="profile-img">
+    
+    <!-- Username -->
+    <div class="username" contenteditable="true">vee</div>
+    
+    <!-- Links Section -->
+    <div class="links">
+        <a href="https://t.me/resuscitative" contenteditable="true">Telegram</a>
+        <a href="https://vazn.uk/bio" contenteditable="true">Bio</a>
+    </div>
+    
+    <!-- PGP Key Section -->
+    <div class="pgp-key" contenteditable="true">
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mDMEafI5MhYJKwYBBAHaRw8BAQdAkoTlPWbePBDa+RV4slixngUh2m+Jlfjn8642
+DWotoli0HXZlZSA8dmVlY29udGFjdEB0dXRhbWFpbC5jb20+iHIEExYIABoECwkI
+BwIVCAIWAQIZAQWCafI5MgKeAQKbAwAKCRAqrlg22DFiqbgeAP9WPlqzC0dmqSG7
+0Uepja1/itlHPNS/it7O/RnSTI7dcgD/QkqjKlJjXpe3wkh5cMHITXxDgLixknDR
+lGCbaGGhMgm4OARp8jkyEgorBgEEAZdVAQUBAQdAQUNuMdYVDQUZcMCCOSeeTR8e
+sNffvwvKT4bGshinHT8DAQgHiGEEGBYIAAkFgmnyOTICmwwACgkQKq5YNtgxYqnc
+hwD+PosR7jpTCrNyHpC/bzqzd4RmRYPshLuwmAKVXLotoUIA/AwtG/DTVWF+WQNj
+bVxJeB8UvOJGbA/IGfwXnJkbvOMK
+=EhsT
+-----END PGP PUBLIC KEY BLOCK-----
+
+    </div>
+</div>
+
+<!-- Snowflakes Effect (Desktop Only) -->
+<script>
+    // Function to create snowflakes following the mouse
+    if (window.innerWidth > 600) {
+        document.body.addEventListener('mousemove', function(event) {
+            createSnowflake(event.pageX, event.pageY);
+        });
+
+        function createSnowflake(x, y) {
+            let snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.style.left = `${x + Math.random() * 10 - 5}px`;
+            snowflake.style.top = `${y + Math.random() * 10 - 5}px`;
+            snowflake.textContent = '❄';
+
+            document.body.appendChild(snowflake);
+
+            // Remove the snowflake after animation completes
+            setTimeout(function() {
+                snowflake.remove();
+            }, 10000);  // Same duration as animation
+        }
+    }
+</script>
+
+</body>
+</html>
