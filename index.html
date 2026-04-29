@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vazn</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* AMOLED background */
+            color: white;
+            font-family: Arial, sans-serif; /* Old-school font */
+            overflow: hidden;
+            text-align: center;
+        }
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .profile {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid white;
+        }
+        .username {
+            margin-top: 15px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .images {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .images img {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .images img:hover {
+            transform: scale(1.1);
+        }
+        /* Snowflake Effect */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            z-index: 999;
+            color: #FFFFFF;
+            font-size: 24px;
+            user-select: none;
+            pointer-events: none;
+            animation: fall 10s linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        /* Mobile scaling */
+        @media (max-width: 768px) {
+            .profile {
+                width: 120px;
+                height: 120px;
+            }
+            .username {
+                font-size: 18px;
+            }
+            .images img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Profile Section -->
+    <img src="pfp.jpg" alt="Profile" class="profile">
+    <div class="username">vee</div>
+
+    <!-- Images Section -->
+    <div class="images">
+        <a href="https://t.me/resuscitative">
+            <img src="tele.jpg" alt="Image 1">
+        </a>
+        <a href="bio">
+            <img src="bio.jpg" alt="Image 2">
+        </a>
+    </div>
+</div>
+
+<script>
+    // Snowflakes falling effect
+    if (window.innerWidth > 768) {
+        document.body.addEventListener('mousemove', (event) => {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.style.left = `${event.clientX}px`;
+            snowflake.style.top = `${event.clientY}px`;
+            snowflake.textContent = '❄'; // Snowflake symbol
+            document.body.appendChild(snowflake);
+            setTimeout(() => {
+                snowflake.remove();
+            }, 10000); // Snowflake will disappear after falling
+        });
+    }
+</script>
+
+</body>
+</html>
