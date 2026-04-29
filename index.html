@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vee</title>
+  <style>
+    /* General styling */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    /* Container to center everything */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    /* Profile picture */
+    .pfp {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 20px 0;
+    }
+
+    /* Username */
+    .username {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    /* Links */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2em;
+      transition: color 0.3s;
+    }
+
+    .links a:hover {
+      color: #ffcc00;
+    }
+
+    /* PGP section */
+    .pgp {
+      text-align: left;
+      max-width: 400px;
+      word-break: break-word;
+    }
+
+    @media (max-width: 500px) {
+      .username {
+        font-size: 1.5em;
+      }
+      .links a {
+        font-size: 1em;
+      }
+      .pfp {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="username">vee</div>
+    <img src="pfp.jpg" alt="Profile Picture" class="pfp">
+    <div class="links">
+      <a href="https://t.me/resuscitative">telegram</a>
+      <a href="https://vazn.uk/bio">bio</a>
+    </div>
+    <div class="pgp">
+      <strong>My PGP key:</strong>
+      <pre>
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mDMEafI5MhYJKwYBBAHaRw8BAQdAkoTlPWbePBDa+RV4slixngUh2m+Jlfjn8642
+DWotoli0HXZlZSA8dmVlY29udGFjdEB0dXRhbWFpbC5jb20+iHIEExYIABoECwkI
+BwIVCAIWAQIZAQWCafI5MgKeAQKbAwAKCRAqrlg22DFiqbgeAP9WPlqzC0dmqSG7
+0Uepja1/itlHPNS/it7O/RnSTI7dcgD/QkqjKlJjXpe3wkh5cMHITXxDgLixknDR
+lGCbaGGhMgm4OARp8jkyEgorBgEEAZdVAQUBAQdAQUNuMdYVDQUZcMCCOSeeTR8e
+sNffvwvKT4bGshinHT8DAQgHiGEEGBYIAAkFgmnyOTICmwwACgkQKq5YNtgxYqnc
+hwD+PosR7jpTCrNyHpC/bzqzd4RmRYPshLuwmAKVXLotoUIA/AwtG/DTVWF+WQNj
+bVxJeB8UvOJGbA/IGfwXnJkbvOMK
+=EhsT
+-----END PGP PUBLIC KEY BLOCK-----
+
+      </pre>
+    </div>
+  </div>
+</body>
+</html>
