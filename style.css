@@ -93,23 +93,3 @@ input[type=range] {
     pointer-events: none;
     z-index: 0;
 }
-
-/* Mobile scaling */
-@media (max-width: 768px) {
-    #ascii-title {
-        font-size: 12px;
-    }
-
-    #profile-pic {
-        width: 100px;
-        height: 100px;
-    }
-
-    .links {
-        flex-direction: column;
-    }
-
-    .audio-controls {
-        flex-direction: column;
-    }
-}
